@@ -1,0 +1,24 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: spring-order-service
+  datasource:
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 3000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics,prometheus"
+  endpoint:
+    health:
+      show-details: always
+
+incidentiq:
+  telemetry:
+    endpoint: "http://localhost:8000/api/v1/telemetry"
+    api-key: "${INCIDENTIQ_API_KEY:iq_live_sample_key}"
